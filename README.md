@@ -13,25 +13,25 @@ The main goal of this project is to measure different aspects of transaction per
 - Writes results to CSV for later analysis
 
 ## Setup
-Make sure you have a Substrate node running locally:
+Make sure you have a Substrate node running locally: <br>
 _ws://127.0.0.1:9944_
 
 Fr this testing, I used polkadot-sdk-solochain-template to run a local node. 
 
-Then generate metadata (You should have subxt-cli installed):
+Then generate metadata (You should have subxt-cli installed): <br>
 _subxt metadata --url ws://127.0.0.1:9944 > solochain_metadata.scale_
 
 Create the chain.rs and chain_readable.rs inside the /src folder. Three files: solochain_metadata.scale, chain.rs and chain_readable.rs are running node-specific and should be replaced by newly created files for your specific running node. 
 
-_subxt codegen --url ws://127.0.0.1:9944 > src/chain.rs
-cp src/chain.rs src/chain_readable.rs
-rustfmt src/chain_readable.rs_
+_subxt codegen --url ws://127.0.0.1:9944 > src/chain.rs_ <br>
+_cp src/chain.rs src/chain_readable.rs_ <br>
+_rustfmt src/chain_readable.rs_
 
 
 ## Build and Run
 _cargo build --release_
 
-Once the build is successful, run the client
+Once the build is successful, run the client <br>
 _cargo run_
 
 
