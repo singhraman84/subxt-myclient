@@ -1,0 +1,26 @@
+[package]
+name = "client"
+version = "0.1.0"
+edition = "2024"
+Author = "Raman Singh"
+Email = "Raman.Singh@ieee.org, Raman.Singh@uws.ac.uk"
+
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+serde_json = "1"
+hex = "0.4"
+
+frame-metadata = "16"
+parity-scale-codec = "3"
+blake2 = "0.10"
+futures = "0.3"
+sp-core = { version = "32.0.0" }
+sp-keyring = { version = "32.0.0" }
+
+
+#Subxt library dependencies
+subxt = { git = "https://github.com/singhraman84/subxt", branch = "master" }
+subxt-signer = { git = "https://github.com/singhraman84/subxt", branch = "master" }
+subxt-core = { git = "https://github.com/singhraman84/subxt", branch = "master" }
+
