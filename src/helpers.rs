@@ -71,7 +71,7 @@ pub async fn fund_account(
         "transfer_allow_death",
         vec![
             dest_multiaddress_id(to),
-            subxt::dynamic::Value::u128(10_000_000_000_000),
+            subxt::dynamic::Value::u128(10_000_000),
         ],
     );
 
@@ -95,8 +95,6 @@ pub async fn free_balance(
     label: &str,
     account: &AccountId32,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    const PAS_UNITS: u128 = 10_000_000_000;
-
     let storage = api.storage().at_latest().await?;
 
     let addr = polkadot_testnet::storage()
@@ -110,15 +108,13 @@ pub async fn free_balance(
     let info = account_info.decode()?;
 
     println!(
-        "{} Free Balance: {} ({} PAS)",
+        "{} Free Balance: {}",
         label,
-        info.data.free,
-        info.data.free as f64 / PAS_UNITS as f64
+        info.data.free
     );
 
     Ok(())
 }
-
 
 // CSV files
 pub fn csv_open_append_keygen(path: &str) -> Result<std::fs::File, Box<dyn std::error::Error>> {

@@ -59,7 +59,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let alice = Sr25519Keypair::from_uri(&SecretUri::from_str("//Alice")?)?;
     let alice_account: AccountId32 = alice.public_key().into();
 
-    let amount: u128 = 10_000_000;
+    let amount: u128 = 1_000_000_000_000;
 
     println!("funding sr...");
     fund_account(&api, &alice, &sr_sender).await?;
@@ -68,6 +68,16 @@ async fn main() -> Result<(), Box<dyn Error>> {
     println!("funding ecdsa...");
     fund_account(&api, &alice, &ec_sender).await?;
     println!("funding ecdsa OK");
+
+// Print free balance
+    println!("Alice's free balance is...");
+    free_balance(&api, "Alice", &alice_account).await?;
+    println!("SR Sender's free balance is...");
+    free_balance(&api, "SR Sender", &sr_sender).await?;
+    println!("EC Sender's free balance is...");
+    free_balance(&api, "EC Sender", &ec_sender).await?;
+
+
     
  // 5. Performance evaluation measurement; Ledger Latency, here the code will run for 10 iterations
  
